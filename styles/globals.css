@@ -24,3 +24,12 @@ a {
     background: black;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Fragile";
+  src: url("../public/fonts/fragile-wy5jy.otf");
+}
