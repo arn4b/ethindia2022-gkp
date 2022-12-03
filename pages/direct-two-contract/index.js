@@ -4,6 +4,8 @@ import { Formik, Field, Form } from 'formik';
 import "react-datepicker/dist/react-datepicker.css";
 import PrimaryButton from '../../components/Common/PrimaryButton';
 
+import setDirectToContract from '../../middlewares/setDirectToContract'
+
 const D2C = () => {
     return (
         <div>
@@ -15,8 +17,9 @@ const D2C = () => {
                     symbol: '',
                 }}
                 onSubmit = {
-                    (values) => {
+                    async (values) => {
                         console.log(JSON.stringify(values, null, 2));
+                        setDirectToContract();
                     }
                 }
             >
