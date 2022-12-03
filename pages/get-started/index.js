@@ -1,19 +1,36 @@
 import React from "react";
 import Navbar from "../../components/Common/Navbar";
 import { useRouter } from "next/router";
+import { BiUser } from "react-icons/bi";
+import { HiOutlineBuildingLibrary } from "react-icons/hi2";
+import Link from "next/link";
 
 export default function IntroSection() {
-    const router = useRouter();
-    return (
-        <div>
-            <Navbar />
-            <div className="flex justify-center items-center">
-                <div className="columns-3 w-full m-4">
-                    <div className="bg-purple-1000 rounded-md p-4" onClick={() => {router.push('/soul-bound')}}>Soul Bound</div>
-                    <div className="bg-purple-1000 rounded-md p-4" onClick={() => {router.push('/direct-two-contract')}}>Direct 2 Contract</div>
-                    <div className="bg-purple-1000 rounded-md p-4" onClick={() => {router.push('/sublet-nfts')}}>Subletting NFTs</div>
-                </div>
-            </div>
-        </div>
-    );
+  const router = useRouter();
+  return (
+    <div>
+      <Navbar />
+      <div className="flex justify-center items-center mt-20">
+        <Link
+          href="/users"
+          className="w-1/2 px-20 flex flex-col justify-center items-center bg-purple-1000 py-40 rounded-2xl mx-5 cursor-pointer"
+        >
+          <div className="text-6xl">
+            <BiUser className=" mb-4" />
+          </div>
+          <div className="text-4xl">I am a User!</div>
+        </Link>
+
+        <Link
+          href="/org"
+          className="w-1/2 px-20 flex flex-col justify-center items-center bg-purple-1000 py-40 rounded-2xl mx-5 cursor-pointer"
+        >
+          <div className="text-6xl">
+            <HiOutlineBuildingLibrary className=" mb-4" />
+          </div>
+          <div className="text-4xl">I am an Organisation!</div>
+        </Link>
+      </div>
+    </div>
+  );
 }

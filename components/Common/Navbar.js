@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className="w-fit">
           <Link href="/" prefetch={false} legacyBehavior>
             <a>
-              <img src="images/gkp3.png" className="h-20"></img>
+              <img src="images/transp-logo1.png" className="h-12 px-2"></img>
             </a>
           </Link>
         </div>
