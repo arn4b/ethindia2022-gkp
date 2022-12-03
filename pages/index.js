@@ -6,14 +6,14 @@ import Footer from "../components/Common/Footer";
 
 export default function Home() {
   return (
-    <div className="h-full">
+    <div className="h-full bg-black">
       <Head>
         <title>GateKeeping Protocol</title>
         <meta name="description" content="Gate Keeping Protocol" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-full">
+      <main className="h-full bg-black">
         <Navbar />
         <LandingPageContainer />
       </main>
