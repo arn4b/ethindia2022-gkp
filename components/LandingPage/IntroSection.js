@@ -1,7 +1,10 @@
 import React from "react";
 import PrimaryButton from "../Common/PrimaryButton";
+import { useRouter } from "next/router";
 
 export default function IntroSection() {
+  const router = useRouter();
+
   return (
     <div>
       <div className="flex justify-center items-center">
@@ -13,7 +16,12 @@ export default function IntroSection() {
         </div>
       </div>
       <div className="flex justify-center">
-        <PrimaryButton onClick={() => {}} name="Get Started"></PrimaryButton>
+        <PrimaryButton
+          onClick={() => {
+            router.push("/get-started");
+          }}
+          name="Try Now"
+        ></PrimaryButton>
       </div>
     </div>
   );
