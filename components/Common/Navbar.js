@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ConnectToWallet from "../Common/ConnectToWallet";
 
 export default function Navbar() {
   const router = useRouter();
@@ -53,6 +54,7 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
+        <ConnectToWallet />
         <div>
           <div className="flex gap-4">
             <button value="Login" onClick={() => router.push("/login")} />

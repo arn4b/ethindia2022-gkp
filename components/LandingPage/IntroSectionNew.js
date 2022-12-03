@@ -30,16 +30,7 @@ export default function IntroSectionNew() {
       </div>
 
       <div className="flex justify-center mt-14">
-        <PrimaryButton
-          onClick={() => {
-            router.push("/get-started");
-          }}
-          name="Try Now"
-        ></PrimaryButton>
-      </div>
-
-      <div className="h-70 rounded-3xl text-center mt-20 mb-10 ">
-        <img src="images/vscode.png" className="rounded-3xl text-center"></img>
+        <PrimaryButton onClick={() => {router.push("/get-started");}} name="Get Started"></PrimaryButton>
       </div>
     </div>
   );
