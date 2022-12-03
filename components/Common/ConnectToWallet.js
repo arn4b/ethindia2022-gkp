@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
 import { useState, useEffect } from 'react'
-import Web3Modal from 'web3modal'
-import { ethers } from 'ethers'
+import Web3Modal from 'web3modal';
+import { ethers } from 'ethers';
+import * as PushAPI from "@pushprotocol/restapi";
 
 import { useDispatch } from 'react-redux'
 import { setAddress, clearAddress } from '../../redux/slice'
@@ -9,6 +10,7 @@ import { truncateAddress } from '../../utils/utils.js'
 import PrimaryButton from './PrimaryButton'
 
 let web3Modal;
+let CHANNEL_ADDRESS = "0x57120abE66aa035dc477a536F22765D51D9F38c7";
 
 if (typeof window !== "undefined") {
     web3Modal = new Web3Modal({
@@ -17,6 +19,39 @@ if (typeof window !== "undefined") {
         providerOptions: {}, // required
     })
 }
+
+async function checkIfUserSubscribed(user_address, channel_address) {
+    const subscriptions = await PushAPI.user.getSubscriptions({
+        user: user_address, // user address in CAIP
+        env: 'staging'
+      });
+    for (const key of subscriptions) {
+        if (key.channel === channel_address) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+async function subscribe(user_address, channel_address, library) {
+    const _signer = library.getSigner(user_address);
+    
+    await PushAPI.channels.subscribe({
+        signer: _signer,
+        channelAddress: channel_address, // channel address in CAIP
+        userAddress: user_address, // user address in CAIP
+        onSuccess: () => {
+         console.log('opt in success');
+        },
+        onError: (e) => {
+            console.log(e)
+          console.error('opt in error');
+        },
+        env: 'staging'
+      })
+}
+
 
 export default function ConnectToWallet() {
     const [provider, setProvider] = useState()
@@ -40,6 +75,13 @@ export default function ConnectToWallet() {
             if (accounts) {
                 setAccount(accounts[0])
                 dispatch(setAddress(accounts[0]))
+                try{
+                    if (!await checkIfUserSubscribed(accounts[0],CHANNEL_ADDRESS)){
+                        subscribe(accounts[0],CHANNEL_ADDRESS, library);
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
             }
             setChainId(network.chainId)
         } catch (error) {
@@ -60,7 +102,7 @@ export default function ConnectToWallet() {
     }
 
     const disconnect = useCallback(async () => {
-        console.log("disconnect caled")
+        console.log("disconnect called");
         await web3Modal.clearCachedProvider()
         refreshState()
         dispatch(clearAddress())
