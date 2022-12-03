@@ -14,6 +14,8 @@ async function pushSoulBoundGate({ name, symbol, limit, price }) {
   let data = {};
   data = await contract.createSoulBoundGate(limit, name, symbol);
 
+  await data.wait(10);
+
   return data;
 }
 

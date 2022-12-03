@@ -7,9 +7,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import PrimaryButton from "../../components/Common/PrimaryButton";
 import pushRentalService from "../../middlewares/pushRentalService";
 import { useToast } from "@chakra-ui/react";
+import getGlobalIds from "../../middlewares/getGlobalIds";
+import pushIdToRentedKey from "../../middlewares/pushIdToRentedKey";
+import Modal from "../../components/Common/Modal";
+import QRCode from "react-qr-code";
+import SecondaryButton from "../../components/Common/SecondaryButton";
 
 const SubletNFTs = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [openModal, setOpenModal] = useState(false);
   const toast = useToast();
   return (
     <div className="bg-black text-white">
@@ -34,14 +39,36 @@ const SubletNFTs = () => {
             status: "success",
           });
           try {
+            toast({
+              title: `Calling all contracts...`,
+              position: "top-right",
+              isClosable: true,
+              duration: 50000,
+              status: "info",
+            });
             await pushRentalService(values);
             toast({
-              title: `Contract Called Successfully`,
+              title: `pushRentalService Called Successfully`,
               position: "top-right",
               isClosable: true,
               duration: 5000,
               status: "success",
             });
+
+            const returnedGlobalId = await getGlobalIds();
+
+            toast({
+                title: `getGlobalIds Called Successfully`,
+                position: "top-right",
+                isClosable: true,
+                duration: 5000,
+                status: "success",
+            });
+
+            const finalResult = await pushIdToRentedKey(returnedGlobalId - 1);
+            localStorage.setItem('contractAddress', finalResult);
+            console.log(finalResult);
+            setOpenModal(true);
           } catch (err) {
             console.log(err.message);
             toast({
@@ -111,6 +138,22 @@ const SubletNFTs = () => {
           <PrimaryButton type="submit" name="Submit"></PrimaryButton>
         </Form>
       </Formik>
+
+      <Modal
+            isModalOpen={openModal}
+            toggleModal={(newBool) => {
+                setOpenModal(newBool);
+            }}
+        >
+            <div className='p-8 flex flex-col justify-center items-center bg-violet-700 rounded-xl'>
+                <div className='text-xl font-bold pb-4'>Heres your QR Code to Mint the NFT</div>
+                <QRCode value={`${window.location.hostname}/qr?contractAddress=${localStorage.getItem('contractAddress')}`} className="rounded-lg m-4" />
+                <a href={`${window.location.hostname}/qr?contractAddress=${localStorage.getItem('contractAddress')}`} >
+                    <div className='bg-white text-purple-800 rounded-md p-4'>{window.location.hostname}/qr?contractAddress={localStorage.getItem('contractAddress')}</div>
+                </a>
+                <SecondaryButton name="Close" onClick={() => setOpenModal(false)} ></SecondaryButton>
+            </div>
+        </Modal>
     </div>
   );
 };

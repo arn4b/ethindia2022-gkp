@@ -15,7 +15,7 @@ async function getGlobalIds() {
     const simplifiedData = ethers.BigNumber.from(data).toString()
     console.log(simplifiedData);
 
-    return data
+    return data;
 }
 
 export default getGlobalIds

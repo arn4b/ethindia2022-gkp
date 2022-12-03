@@ -3,12 +3,16 @@ import Navbar from '../../components/Common/Navbar'
 import { Formik, Field, Form } from 'formik';
 import "react-datepicker/dist/react-datepicker.css";
 import PrimaryButton from '../../components/Common/PrimaryButton';
-import { useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react';
+import Modal from '../../components/Common/Modal';
+import QRCode from "react-qr-code";
 
 import pushDirectToContract from '../../middlewares/pushDirectToContract'
+import SecondaryButton from '../../components/Common/SecondaryButton';
 
 const D2C = () => {
     const toast = useToast();
+    const [openModal, setOpenModal] = useState(false);
 
     return (
         <div className='bg-black text-white'>
