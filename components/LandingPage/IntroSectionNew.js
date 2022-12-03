@@ -34,12 +34,8 @@ export default function IntroSectionNew() {
           onClick={() => {
             router.push("/get-started");
           }}
-          name="Try Now"
+          name="Get Started"
         ></PrimaryButton>
-      </div>
-
-      <div className="h-70 rounded-3xl text-center mt-20 mb-10 ">
-        <img src="images/vscode.png" className="rounded-3xl text-center"></img>
       </div>
     </div>
   );
