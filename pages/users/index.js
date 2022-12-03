@@ -8,10 +8,10 @@ import Link from "next/link";
 export default function IntroSection() {
   const router = useRouter();
   return (
-    <div>
+    <div className="bg-black">
       <Navbar />
 
-      <div className="grid grid-cols-2 grid-rows-2 gap-y-8 mt-20">
+      <div className="grid grid-cols-2 grid-rows-2 gap-y-8 mt-20 text-white">
         <Link
           href="/users/soul-bound"
           className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"

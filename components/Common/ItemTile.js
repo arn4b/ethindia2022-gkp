@@ -1,8 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { FaEthereum } from "react-icons/fa";
+import { useState } from "react";
+import Modal from "./Modal";
+import { Formik, Field, Form } from "formik";
+import PrimaryButton from "./PrimaryButton";
 
 const ItemTile = (props) => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mt-10">
       <img
@@ -30,14 +35,70 @@ const ItemTile = (props) => {
             599
           </span>
           {props.isRent && (
-            <a
-              href="#"
-              className="text-white bg-purple-1000 font-medium rounded-lg text-md px-5 py-2.5 text-center"
+            <div
+              className="text-white bg-purple-1000 font-medium rounded-lg text-md px-5 py-2.5 text-center cursor-pointer"
+              onClick={() => {
+                setOpenModal(true);
+              }}
             >
               Rent
-            </a>
+            </div>
           )}
         </div>
+
+        <Modal
+          isModalOpen={openModal}
+          toggleModal={(newBool) => {
+            setOpenModal(newBool);
+          }}
+        >
+          <div className="bg-black rounded-2xl py-10 px-10">
+            <Formik
+              initialValues={{
+                name: "",
+                symbol: "",
+                total: "",
+              }}
+              onSubmit={(values) => {
+                console.log(JSON.stringify(values, null, 2));
+              }}
+            >
+              <Form className="flex flex-col w-3/5 items-center justify-center">
+                <label htmlFor="name" className="p-2">
+                  Name
+                </label>
+                <Field
+                  id="name"
+                  name="name"
+                  placeholder="Jane"
+                  className="p-2 rounded-md my-4"
+                />
+
+                <label htmlFor="symbol" className="p-2">
+                  Symbol
+                </label>
+                <Field
+                  id="symbol"
+                  name="symbol"
+                  placeholder="MATIC"
+                  className="p-2 rounded-md my-4"
+                />
+
+                <label htmlFor="total" className="p-2">
+                  Total
+                </label>
+                <Field
+                  id="total"
+                  name="total"
+                  placeholder="00"
+                  className="p-2 rounded-md my-4"
+                />
+
+                <PrimaryButton type="submit" name="Submit"></PrimaryButton>
+              </Form>
+            </Formik>
+          </div>
+        </Modal>
       </div>
     </div>
   );
