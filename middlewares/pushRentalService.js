@@ -14,6 +14,8 @@ async function pushRentalService({ name, symbol, limit, price, duration }) {
   let data = {};
   data = await contract.createRentedGate(limit, name, symbol);
 
+  await data.wait(10);
+
   return data;
 }
 
