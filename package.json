@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^2.4.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@pushprotocol/restapi": "^0.2.2",
     "@reduxjs/toolkit": "^1.9.1",
     "ethers": "^5.7.2",
     "formik": "^2.2.9",
