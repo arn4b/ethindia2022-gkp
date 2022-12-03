@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@biconomy/core-types": "^0.0.4",
+    "@biconomy/smart-account": "^0.0.4",
     "@chakra-ui/react": "^2.4.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@pushprotocol/restapi": "^0.2.2",
+    "@rainbow-me/rainbowkit": "^0.8.0",
     "@reduxjs/toolkit": "^1.9.1",
     "ethers": "^5.7.2",
     "formik": "^2.2.9",
