@@ -13,16 +13,16 @@ export default function IntroSection() {
 
       <div className="grid grid-cols-2 grid-rows-2 gap-y-8 mt-20">
         <Link
-          href="/users"
+          href="/users/soul-bound"
           className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
         >
           <div className="text-6xl">
             <BiUser className=" mb-4" />
           </div>
-          <div className="text-4xl">Sould Bound Tokens (SBT)</div>
+          <div className="text-4xl">Soul Bound Tokens (SBT)</div>
         </Link>
         <Link
-          href="/users"
+          href="/users/whitelisted"
           className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
         >
           <div className="text-6xl">
@@ -31,7 +31,7 @@ export default function IntroSection() {
           <div className="text-4xl">Whitelist Contracts (WC)</div>
         </Link>
         <Link
-          href="/users"
+          href="/users/renting"
           className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
         >
           <div className="text-6xl">
@@ -40,7 +40,7 @@ export default function IntroSection() {
           <div className="text-4xl">Rental Contract</div>
         </Link>
         <Link
-          href="/users"
+          href="/marketplace"
           className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
         >
           <div className="text-6xl">
@@ -49,15 +49,6 @@ export default function IntroSection() {
           <div className="text-4xl">Market Place</div>
         </Link>
       </div>
-
-      {/* <Link href="/users" className="w-1/2 ">
-            <div className="h-full px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl mx-4 cursor-pointer h-full">
-              <div className="text-6xl">
-                <BiUser className=" mb-4" />
-              </div>
-              <div className="text-4xl">I am a User!</div>
-            </div>
-          </Link> */}
     </div>
   );
 }
