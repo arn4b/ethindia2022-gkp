@@ -17,12 +17,14 @@ const SubletNFTs = () => {
                 initialValues={{
                     name: '',
                     symbol: '',
-                    total: '',
-                    selectedDate: selectedDate,
+                    limit: '',
+                    price: '',
+                    duration: '',
                 }}
                 onSubmit = {
                     (values) => {
                         console.log(JSON.stringify(values, null, 2));
+                        console.log(values.duration * 86400);
                     }
                 }
             >
@@ -33,10 +35,14 @@ const SubletNFTs = () => {
                 <label htmlFor="symbol"  className="p-2 mx-4">Symbol</label>
                 <Field id="symbol" name="symbol" placeholder="MATIC" className="p-2 rounded-md m-4"  />
 
-                <label htmlFor="total"  className="p-2 mx-4">Total</label>
-                <Field id="total" name="total" placeholder="00" className="p-2 rounded-md m-4"  />
+                <label htmlFor="limit"  className="p-2 mx-4">Limit</label>
+                <Field id="limit" name="limit" type="number" placeholder="00" className="p-2 rounded-md m-4"  />
 
-                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} id="selectedDate" name="selectedDate" className="p-2 rounded-md m-4"/>
+                <label htmlFor="price"  className="p-2 mx-4">Price</label>
+                <Field id="price" name="price" type="number" placeholder="00"  className="p-2 rounded-md m-4"  />
+
+                <label htmlFor="duration"  className="p-2 mx-4">Duration</label>
+                <Field id="duration" name="duration" type="number" placeholder="00" className="p-2 rounded-md m-4"  />
                 
                 <PrimaryButton
                     type="submit"
