@@ -1,5 +1,6 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
+import PrimaryButton from "../Common/PrimaryButton";
 
 export default function IntroSectionNew() {
   return (
@@ -9,15 +10,25 @@ export default function IntroSectionNew() {
       </div>
       <div className="text-6xl text-purple-1000 font-bold font-fragile text-center mt-5">
         <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .typeString("POAP")
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString("NFT Sharing Service")
-              .start();
+          options={{
+            strings: [
+              "Entry Management",
+              "Subscription System",
+              "Token Gating Protocol",
+            ],
+            autoStart: true,
+            loop: true,
           }}
         />
+      </div>
+
+      <div className="text-center text-slate-300 font-semibold text-xl mx-100 mt-5">
+        One-stop decentralised gating solution for all your Event Entry
+        Management needs and Readily Adaptable Subscription Systems
+      </div>
+
+      <div className="flex justify-center mt-14">
+        <PrimaryButton onClick={() => {}} name="Get Started"></PrimaryButton>
       </div>
     </div>
   );

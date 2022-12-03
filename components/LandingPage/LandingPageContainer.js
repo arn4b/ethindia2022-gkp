@@ -8,8 +8,8 @@ export default function LandingPageContainer() {
   return (
     <div className="">
       <IntroSectionNew />
-      <PoweredBy />
-      <PerksSection />
+      {/* <PoweredBy /> */}
+      {/* <PerksSection /> */}
     </div>
   );
 }
