@@ -13,7 +13,7 @@ export default function IntroSection() {
         </div>
       </div>
       <div className="flex justify-center">
-        <PrimaryButton onClick={() => {}} name="Try Now"></PrimaryButton>
+        <PrimaryButton onClick={() => {}} name="Get Started"></PrimaryButton>
       </div>
     </div>
   );
