@@ -147,10 +147,15 @@ const SubletNFTs = () => {
           >
               <div className='p-8 flex flex-col justify-center items-center bg-violet-700 rounded-xl'>
                   <div className='text-xl font-bold pb-4'>Heres your QR Code to Mint the NFT</div>
+                  {typeof window !== "undefined" && 
+                  <>
                   <QRCode value={`${window.location.hostname}/qr?contractAddress=${localStorage.getItem('contractAddress')}`} className="rounded-lg m-4" />
                   <a href={`${window.location.hostname}/qr?contractAddress=${localStorage.getItem('contractAddress')}`} >
                       <div className='bg-white text-purple-800 rounded-md p-4'>{window.location.hostname}/qr?contractAddress={localStorage.getItem('contractAddress')}</div>
                   </a>
+                  </>
+                  }
+                  
                   <SecondaryButton name="Close" onClick={() => setOpenModal(false)} ></SecondaryButton>
               </div>
           </Modal>
