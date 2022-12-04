@@ -11,6 +11,7 @@ import axios from "axios";
 import store from "../../redux/store";
 import { useSelector } from "react-redux";
 
+
 import { useToast } from "@chakra-ui/react";
 import SecondaryButton from "../../components/Common/SecondaryButton";
 import pushIdToSoulBoundKey from "../../middlewares/pushIdToSoulBoundKey";
@@ -18,6 +19,7 @@ import pushIdToSoulBoundKey from "../../middlewares/pushIdToSoulBoundKey";
 const SoulBound = () => {
 	const toast = useToast();
 	const [openModal, setOpenModal] = useState(false);
+
 
 	let userAddress = store.getState().walletAddress;
 	const smartAccount = useSelector((store) => store.secretAdress);
@@ -67,7 +69,6 @@ const SoulBound = () => {
 									duration: 5000,
 									status: "success",
 								});
-
 								const returnedGlobalId = await getGlobalIds();
 
 								toast({
