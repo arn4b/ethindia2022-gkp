@@ -15,55 +15,59 @@ const D2C = () => {
     const [openModal, setOpenModal] = useState(false);
 
     return (
-        <div className='bg-black text-white'>
+        <div>
             <Navbar />
-            <h1>Direct 2 Contract</h1>
-            <Formik
-                initialValues={{
-                    name: '',
-                }}
-                onSubmit = {
-                    async (values) => {
-                        console.log(JSON.stringify(values, null, 2));
-                        toast({
-                            title: `Contract Called Successfully`,
-                            position: "top-right",
-                            isClosable: true,
-                            duration: 5000,
-                            status: "success",
-                        });
-                        try {
-                            await pushDirectToContract(values.name);
+            <div className="bg-black flex justify-center items-center text-white">
+            <div className="w-2/5 rounded-lg p-4 m-16" style={{"border":"4px rgb(107 33 168) solid"}}>
+            <h1 className="text-4xl font-fragile text-white m-4 flex">Direct to Contract</h1>
+                <Formik
+                    initialValues={{
+                        name: '',
+                    }}
+                    onSubmit = {
+                        async (values) => {
+                            console.log(JSON.stringify(values, null, 2));
                             toast({
-                                title: `Name sent to Contract Successfully!`,
+                                title: `Contract Called Successfully`,
                                 position: "top-right",
                                 isClosable: true,
                                 duration: 5000,
                                 status: "success",
                             });
-                        } catch (error) {
-                            toast({
-                                title: `${error}`,
-                                position: "top-right",
-                                isClosable: true,
-                                duration: 5000,
-                                status: "error",
-                            });
-                        }
+                            try {
+                                await pushDirectToContract(values.name);
+                                toast({
+                                    title: `Name sent to Contract Successfully!`,
+                                    position: "top-right",
+                                    isClosable: true,
+                                    duration: 5000,
+                                    status: "success",
+                                });
+                            } catch (error) {
+                                toast({
+                                    title: `${error}`,
+                                    position: "top-right",
+                                    isClosable: true,
+                                    duration: 5000,
+                                    status: "error",
+                                });
+                            }
 
+                        }
                     }
-                }
-            >
-                <Form className='flex flex-col justify-center items-center'>
-                    <label htmlFor="name" className="p-2 mx-4">Name</label>
-                    <Field id="name" name="name" placeholder="Jane" className="p-2 rounded-md m-4" />
-                    
-                    <PrimaryButton
-                        type="submit"
-                        name="Submit"
-                    ></PrimaryButton>
-                </Form>
-            </Formik>
+                >
+                    <Form className="flex flex-col justify-center items-left">
+                        <label htmlFor="name" className="p-2 text-white font-fragile text-2xl">Name</label>
+                        <Field id="name" name="name" placeholder="Jane" className="p-2 rounded-md my-1 w-full text-xl" />
+                        
+                        <PrimaryButton
+                            type="submit"
+                            name="Submit"
+                        ></PrimaryButton>
+                    </Form>
+                </Formik>
+                </div>
+            </div>
         </div>
     )
 }

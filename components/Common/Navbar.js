@@ -32,7 +32,7 @@ export default function Navbar() {
             </a>
           </Link>
         </div>
-        <div className="hidden md:block md:w-2/5">
+        {/* <div className="hidden md:block md:w-2/5">
           <ul className="flex gap-10">
             {navLinks.map((link) => (
               <Link
@@ -53,13 +53,13 @@ export default function Navbar() {
               </Link>
             ))}
           </ul>
-        </div>
+        </div> */}
         <ConnectToWallet />
-        <div>
+        {/* <div>
           <div className="flex gap-4">
             <button value="Login" onClick={() => router.push("/login")} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

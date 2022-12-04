@@ -11,42 +11,42 @@ export default function IntroSection() {
     <div className="bg-black">
       <Navbar />
 
-      <div className="grid grid-cols-2 grid-rows-2 gap-y-8 mt-20 text-white">
+      <div className="grid grid-cols-2 grid-rows-2 gap-y-8 m-20 text-white" style={{"height":"calc(100vh - 300px)"}}>
         <Link
           href="/users/soul-bound"
-          className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
+          className="mx-4 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full hover:scale-105 hover:bg-purple-1000 transition ease-in-out"
         >
           <div className="text-6xl">
             <BiUser className=" mb-4" />
           </div>
-          <div className="text-4xl">Soul Bound Tokens (SBT)</div>
+          <div className="text-4xl font-fragile">Soul Bound Tokens</div>
         </Link>
         <Link
           href="/users/whitelisted"
-          className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
+          className="mx-4 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full hover:scale-105 hover:bg-purple-1000 transition ease-in-out"
         >
           <div className="text-6xl">
             <BiUser className=" mb-4" />
           </div>
-          <div className="text-4xl">Whitelist Contracts (WC)</div>
+          <div className="text-4xl font-fragile">Whitelist Contracts</div>
         </Link>
         <Link
           href="/users/renting"
-          className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
+          className="mx-4 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full hover:scale-105 hover:bg-purple-1000 transition ease-in-out"
         >
           <div className="text-6xl">
             <BiUser className=" mb-4" />
           </div>
-          <div className="text-4xl">Rental Contract</div>
+          <div className="text-4xl font-fragile">Rental Contract</div>
         </Link>
         <Link
           href="/marketplace"
-          className="mx-20 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full"
+          className="mx-4 px-10 flex flex-col justify-center items-center bg-purple-1000 py-20 rounded-2xl cursor-pointer h-full hover:scale-105 hover:bg-purple-1000 transition ease-in-out"
         >
           <div className="text-6xl">
             <BiUser className=" mb-4" />
           </div>
-          <div className="text-4xl">Market Place</div>
+          <div className="text-4xl font-fragile">Market Place</div>
         </Link>
       </div>
     </div>
