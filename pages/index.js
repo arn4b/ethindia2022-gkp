@@ -16,6 +16,7 @@ export default function Home() {
       <main className="h-full bg-black">
         <Navbar />
         <LandingPageContainer />
+        <img src="images/gkp-intro.png" className="flex mx-auto w-2/5 h-200" />
       </main>
       <Footer />
     </div>
