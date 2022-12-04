@@ -8,7 +8,7 @@ const walletAddressSlice = createSlice({
 		// home_address: null,
 		// gd_link: null,
 		// age: null,
-		userDetails: null,
+		// userDetails: null,
 		secretAdress: null,
 	},
 	reducers: {
