@@ -18,42 +18,42 @@ let web3Modal;
 let CHANNEL_ADDRESS = "0x57120abE66aa035dc477a536F22765D51D9F38c7";
 
 if (typeof window !== "undefined") {
-	web3Modal = new Web3Modal({
-		network: "testnet", // optional
-		cacheProvider: true, // optional
-		providerOptions: {}, // required
-	});
+  web3Modal = new Web3Modal({
+    network: "testnet", // optional
+    cacheProvider: true, // optional
+    providerOptions: {}, // required
+  });
 }
 
 async function checkIfUserSubscribed(user_address, channel_address) {
-	const subscriptions = await PushAPI.user.getSubscriptions({
-		user: user_address, // user address in CAIP
-		env: "staging",
-	});
-	for (const key of subscriptions) {
-		if (key.channel === channel_address) {
-			return true;
-		}
-	}
-	return false;
+  const subscriptions = await PushAPI.user.getSubscriptions({
+    user: user_address, // user address in CAIP
+    env: "staging",
+  });
+  for (const key of subscriptions) {
+    if (key.channel === channel_address) {
+      return true;
+    }
+  }
+  return false;
 }
 
 async function subscribe(user_address, channel_address, library) {
-	const _signer = library.getSigner(user_address);
+  const _signer = library.getSigner(user_address);
 
-	await PushAPI.channels.subscribe({
-		signer: _signer,
-		channelAddress: channel_address, // channel address in CAIP
-		userAddress: user_address, // user address in CAIP
-		onSuccess: () => {
-			console.log("opt in success");
-		},
-		onError: (e) => {
-			console.log(e);
-			console.error("opt in error");
-		},
-		env: "staging",
-	});
+  await PushAPI.channels.subscribe({
+    signer: _signer,
+    channelAddress: channel_address, // channel address in CAIP
+    userAddress: user_address, // user address in CAIP
+    onSuccess: () => {
+      console.log("opt in success");
+    },
+    onError: (e) => {
+      console.log(e);
+      console.error("opt in error");
+    },
+    env: "staging",
+  });
 }
 
 export default function ConnectToWallet() {
@@ -197,4 +197,5 @@ export default function ConnectToWallet() {
 			<ConnectButton chainStatus="name" />
 		</div>
 	);
+
 }

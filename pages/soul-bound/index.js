@@ -218,8 +218,10 @@ const SoulBound = () => {
                     </Modal>
                 </div>
             </div>
+          </Modal>
         </div>
-
-    );
+      </div>
+    </div>
+  );
 };
 export default SoulBound;
