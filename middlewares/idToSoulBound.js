@@ -1,9 +1,8 @@
 import { ethers } from "ethers";
-import abi from "./abi.json";
-import store from "../redux/store";
 import { GKP_CONTRACT_ADDRESS } from "../public/constants";
+import abi from "./abi.json";
 
-async function pushSoulBoundGate({ name, symbol, limit, price }) {
+async function idToSoulBound(id) {
   let contractAddress = GKP_CONTRACT_ADDRESS;
   const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   await provider.send("eth_requestAccounts", []);
@@ -11,12 +10,9 @@ async function pushSoulBoundGate({ name, symbol, limit, price }) {
 
   const contract = new ethers.Contract(contractAddress, abi, signer);
 
-  let data = {};
-  data = await contract.createSoulBoundGate(limit, name, symbol);
-
-  await data.wait(10);
+  const data = await contract.idToSoulBoundKey(id);
 
   return data;
 }
 
-export default pushSoulBoundGate;
+export default idToSoulBound;

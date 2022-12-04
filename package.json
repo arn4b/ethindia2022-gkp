@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@biconomy/core-types": "^0.0.4",
+    "@biconomy/smart-account": "^0.0.4",
     "@chakra-ui/react": "^2.4.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@pushprotocol/restapi": "^0.2.2",
+    "@rainbow-me/rainbowkit": "^0.8.0",
     "@reduxjs/toolkit": "^1.9.1",
     "ethers": "^5.7.2",
     "formik": "^2.2.9",
@@ -22,6 +25,7 @@
     "react-datepicker": "^4.8.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
+    "react-qr-code": "^2.0.8",
     "react-redux": "^8.0.5",
     "typewriter-effect": "^2.19.0",
     "wagmi": "^0.8.9",

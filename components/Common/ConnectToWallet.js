@@ -3,12 +3,17 @@ import { useState, useEffect } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import * as PushAPI from "@pushprotocol/restapi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import { useDispatch } from "react-redux";
-import { setAddress, clearAddress } from "../../redux/slice";
+import { setAddress, clearAddress, setSecretAddress } from "../../redux/slice";
 import { truncateAddress } from "../../utils/utils.js";
 import PrimaryButton from "./PrimaryButton";
+import { useAccount, useConnect, useEnsName, useSigner } from "wagmi";
+import { InjectedConnector } from "wagmi/connectors/injected";
 
+import { ChainId } from "@biconomy/core-types";
+import SmartAccount from "@biconomy/smart-account";
 let web3Modal;
 let CHANNEL_ADDRESS = "0x57120abE66aa035dc477a536F22765D51D9F38c7";
 
@@ -61,6 +66,16 @@ export default function ConnectToWallet() {
   const [network, setNetwork] = useState();
 
   const dispatch = useDispatch();
+  const { address, isConnected } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  });
+  const { data: signer } = useSigner();
+  // const { address } = useAccount();
+  const [smartAccount, setSmartAccount] = useState(null);
+  const [scwAddress, setScwAddress] = useState("");
+  const [scwLoading, setScwLoading] = useState(false);
 
   const connectToWallet = useCallback(async () => {
     try {
@@ -92,6 +107,36 @@ export default function ConnectToWallet() {
       connectToWallet();
     }
   }, [connectToWallet]);
+
+  useEffect(() => {
+    async function setupSmartAccount() {
+      setScwAddress("");
+      setScwLoading(true);
+      const walletProvider = new ethers.providers.Web3Provider(
+        signer?.provider?.provider
+      );
+      const smartAccount = new SmartAccount(walletProvider, {
+        activeNetworkId: ChainId.POLYGON_MUMBAI,
+        supportedNetworksIds: [ChainId.POLYGON_MUMBAI],
+        networkConfig: [
+          {
+            chainId: ChainId.POLYGON_MUMBAI,
+            dappAPIKey: "59fRCMXvk.8a1652f0-b522-4ea7-b296-98628499aee3",
+          },
+        ],
+      });
+      await smartAccount.init();
+      const context = smartAccount.getSmartAccountContext();
+      setScwAddress(context.baseWallet.getAddress());
+      setSmartAccount(smartAccount);
+      setScwLoading(false);
+      dispatch(setSecretAddress(smartAccount));
+    }
+    if (!!signer?.provider && !!address) {
+      setupSmartAccount();
+      console.log("Provider...", signer?.provider);
+    }
+  }, [address, signer?.provider]);
 
   const refreshState = () => {
     setAccount();
@@ -140,24 +185,16 @@ export default function ConnectToWallet() {
 
   return (
     <div>
-      <div className="flex">
-        {account ? (
-          <PrimaryButton
-            onClick={disconnect}
-            name="Disconnect Wallet"
-          ></PrimaryButton>
-        ) : (
-          <PrimaryButton onClick={connectToWallet} name="Connect Wallet">
-            Connect Wallet
-          </PrimaryButton>
-        )}
-        {account && (
-          <PrimaryButton
-            name={`Wallet Address: ${truncateAddress(account)}`}
-          ></PrimaryButton>
-        )}
-      </div>
+      <ConnectButton chainStatus="name" />
 
+      {scwLoading && <h2>Loading Smart Account...</h2>}
+
+      {scwAddress && (
+        <div>
+          <h2>Smart Account Address</h2>
+          <p>{scwAddress}</p>
+        </div>
+      )}
       {/* {account ? navigate('/profile') : <>oh no take insurance</>} */}
     </div>
   );
