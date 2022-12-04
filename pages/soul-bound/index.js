@@ -7,6 +7,8 @@ import pushSoulBoundService from "../../middlewares/pushSoulBoundService";
 import getGlobalIds from "../../middlewares/getGlobalIds";
 import Modal from "../../components/Common/Modal";
 import QRCode from "react-qr-code";
+import axios from "axios";
+import store from "../../redux/store";
 
 import { useToast } from "@chakra-ui/react";
 import SecondaryButton from "../../components/Common/SecondaryButton";
@@ -15,6 +17,8 @@ import pushIdToSoulBoundKey from "../../middlewares/pushIdToSoulBoundKey";
 const SoulBound = () => {
   const toast = useToast();
   const [openModal, setOpenModal] = useState(false);
+
+  let userAddress = store.getState().walletAddress;
 
   return (
     <div>
@@ -74,6 +78,12 @@ const SoulBound = () => {
                   returnedGlobalId - 1
                 );
                 localStorage.setItem("contractAddress", finalResult);
+                axios.post(
+                  "https://gkp-push-production.up.railway.app/notifyOrganization",
+                  {
+                    organizer_address: { userAddress },
+                  }
+                );
                 console.log(finalResult);
                 setOpenModal(true);
               } catch (err) {
