@@ -1,57 +1,27 @@
 [
-    {
-    "inputs": [],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-    },
-    {
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
     "inputs": [],
     "name": "admin",
-    "outputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-        },
-        {
-        "internalType": "address",
-        "name": "_owner",
-        "type": "address"
-        }
+      { "internalType": "string", "name": "_name", "type": "string" },
+      { "internalType": "address", "name": "_owner", "type": "address" }
     ],
     "name": "createNormalGate",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "_totalKeys",
-        "type": "uint256"
-        },
-        {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-        },
-        {
-        "internalType": "string",
-        "name": "_symbol",
-        "type": "string"
-        }
+      { "internalType": "uint256", "name": "_totalKeys", "type": "uint256" },
+      { "internalType": "string", "name": "_name", "type": "string" },
+      { "internalType": "string", "name": "_symbol", "type": "string" }
     ],
     "name": "createRentedGate",
     "outputs": [
@@ -63,24 +33,12 @@
     ],
     "stateMutability": "nonpayable",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "_totalKeys",
-        "type": "uint256"
-        },
-        {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-        },
-        {
-        "internalType": "string",
-        "name": "_symbol",
-        "type": "string"
-        }
+      { "internalType": "uint256", "name": "_totalKeys", "type": "uint256" },
+      { "internalType": "string", "name": "_name", "type": "string" },
+      { "internalType": "string", "name": "_symbol", "type": "string" }
     ],
     "name": "createSoulBoundGate",
     "outputs": [
@@ -92,23 +50,13 @@
     ],
     "stateMutability": "nonpayable",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-        }
+      { "internalType": "uint256", "name": "_tokenId", "type": "uint256" }
     ],
     "name": "fetchKeyAddress",
-    "outputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "nonpayable",
     "type": "function"
     },
@@ -134,203 +82,117 @@
     {
     "inputs": [],
     "name": "globalId",
-    "outputs": [
-        {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-        }
-    ],
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
-    "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-        }
-    ],
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "idToNormalGate",
     "outputs": [
-        {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-        },
-        {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-        },
-        {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-        }
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "address", "name": "owner", "type": "address" },
+      { "internalType": "string", "name": "name", "type": "string" }
     ],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
-    "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-        }
-    ],
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "idToRentedKey",
-    "outputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
-    "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-        }
-    ],
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "name": "idToSoulBoundKey",
-    "outputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [],
     "name": "rentedKeyTemplate",
-    "outputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
+      {
         "internalType": "address",
         "name": "_soulBoundKeyTemplate",
         "type": "address"
-        },
-        {
+      },
+      {
         "internalType": "address",
         "name": "_rentedKeyTemplate",
         "type": "address"
-        }
+      }
     ],
     "name": "setTemplates",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [],
     "name": "soulBoundKeyTemplate",
-    "outputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        }
-    ],
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-        },
-        {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-        }
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
     ],
     "name": "tenants",
     "outputs": [
-        {
-        "internalType": "uint256",
-        "name": "dropId",
-        "type": "uint256"
-        },
-        {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-        }
+      { "internalType": "uint256", "name": "dropId", "type": "uint256" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
     ],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "_gateId",
-        "type": "uint256"
-        },
-        {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-        },
-        {
-        "internalType": "address",
-        "name": "tenant",
-        "type": "address"
-        }
+      { "internalType": "uint256", "name": "_gateId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_tokenId", "type": "uint256" },
+      { "internalType": "address", "name": "tenant", "type": "address" }
     ],
     "name": "updateTenantData",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-    },
-    {
+  },
+  {
     "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "_gateId",
-        "type": "uint256"
-        },
-        {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-        },
-        {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-        }
+      { "internalType": "uint256", "name": "_gateId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_tokenId", "type": "uint256" },
+      { "internalType": "address", "name": "_user", "type": "address" }
     ],
     "name": "updateUserData",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-    },
-    {
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "userNftLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "userRkDropLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
         {
         "internalType": "address",
@@ -448,33 +310,46 @@
         "type": "uint256"
         }
     ],
+    "name": "userRkDrops",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "userSbkDropLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "userSbkDrops",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
     "name": "userTokens",
     "outputs": [
-        {
-        "internalType": "uint256",
-        "name": "dropId",
-        "type": "uint256"
-        },
-        {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-        }
+      { "internalType": "uint256", "name": "dropId", "type": "uint256" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
     ],
     "stateMutability": "view",
     "type": "function"
-    },
-    {
-    "inputs": [
-        {
-        "internalType": "uint256",
-        "name": "_id",
-        "type": "uint256"
-        }
-    ],
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_id", "type": "uint256" }],
     "name": "whitelistUsingNormalKey",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-    }
+  }
 ]
