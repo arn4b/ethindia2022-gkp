@@ -9,7 +9,6 @@ async function pushSoulBoundGate({ name, symbol, limit, price, smartAccount }) {
 		limit,
 		name,
 		symbol,
-		price,
 	]);
 
 	let txn = {
