@@ -3,20 +3,29 @@ import abi from "./abi.json";
 import store from "../redux/store";
 import { GKP_CONTRACT_ADDRESS } from "../public/constants";
 
-async function pushSoulBoundGate({ name, symbol, limit, price }) {
-  let contractAddress = GKP_CONTRACT_ADDRESS;
-  const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-  await provider.send("eth_requestAccounts", []);
-  const signer = provider.getSigner();
+async function pushSoulBoundGate({ name, symbol, limit, price, smartAccount }) {
+	let iface = new ethers.utils.Interface(abi);
+	let encodedData = iface.encodeFunctionData("createSoulBoundGate", [
+		limit,
+		name,
+		symbol,
+	]);
 
-  const contract = new ethers.Contract(contractAddress, abi, signer);
+	let txn = {
+		to: GKP_CONTRACT_ADDRESS,
+		data: encodedData,
+	};
 
-  let data = {};
-  data = await contract.createSoulBoundGate(limit, name, symbol);
+	let txdata;
+	smartAccount.on("error", (response) => {
+		console.log("error event received via emitter", response);
+	});
+	txdata = await smartAccount.sendGasLessTransaction({
+		transaction: txn,
+	});
 
-  await data.wait(10);
-
-  return data;
+	console.log(txdata);
+	return txdata;
 }
 
 export default pushSoulBoundGate;
