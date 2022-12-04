@@ -79,46 +79,62 @@ const SoulBound = () => {
 									status: "success",
 								});
 
-								const finalResult = await pushIdToSoulBoundKey(
-									returnedGlobalId - 1
-								);
-								localStorage.setItem(
-									"contractAddress",
-									finalResult
-								);
-								axios.post(
-									"https://gkp-push-production.up.railway.app/notifyOrganization",
-									{
-										organizer_address: userAddress,
-									}
-								);
-								console.log(finalResult);
-								setOpenModal(true);
-							} catch (err) {
-								console.log(err.message);
-								toast({
-									title: `Contract Called Failed`,
-									position: "top-right",
-									isClosable: true,
-									duration: 5000,
-									status: "error",
-								});
-							}
-						}}
-					>
-						<Form className="flex flex-col justify-center items-left">
-							<label
-								htmlFor="name"
-								className="p-2 text-white font-fragile text-2xl"
-							>
-								Name
-							</label>
-							<Field
-								id="name"
-								name="name"
-								placeholder="Jane"
-								className="p-2 rounded-md my-1 w-full text-xl"
-							/>
+                const finalResult = await pushIdToSoulBoundKey(
+                  returnedGlobalId - 1
+                );
+                localStorage.setItem("contractAddress", finalResult);
+                // axios.post(
+                //   "https://gkp-push-production.up.railway.app/notifyOrganization",
+                //   {
+                //     organizer_address: userAddress,
+                //   }
+                // );
+                let data = {
+                    organizer_address: userAddress,
+                  };
+                  const response = await fetch(
+                    "https://gkp-push-production.up.railway.app/notifyOrganization",
+                    {
+                      method: "POST", // *GET, POST, PUT, DELETE, etc.
+                      mode: "cors", // no-cors, *cors, same-origin
+                      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                      credentials: "same-origin", // include, *same-origin, omit
+                      headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      redirect: "follow", // manual, *follow, error
+                      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                      body: JSON.stringify(data), // body data type must match "Content-Type" header
+                    }
+                  );
+                console.log(finalResult);
+                setOpenModal(true);
+              } catch (err) {
+                console.log(err.message);
+                toast({
+                  title: `Contract Called Failed`,
+                  position: "top-right",
+                  isClosable: true,
+                  duration: 5000,
+                  status: "error",
+                });
+              }
+            }}
+          >
+            <Form className="flex flex-col justify-center items-left">
+              <label
+                htmlFor="name"
+                className="p-2 text-white font-fragile text-2xl"
+              >
+                Name
+              </label>
+              <Field
+                id="name"
+                name="name"
+                placeholder="Jane"
+                className="p-2 rounded-md my-1 w-full text-xl"
+              />
 
 							<label
 								htmlFor="symbol"
