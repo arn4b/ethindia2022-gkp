@@ -7,16 +7,20 @@ import pushSoulBoundService from "../../middlewares/pushSoulBoundService";
 import getGlobalIds from "../../middlewares/getGlobalIds";
 import Modal from "../../components/Common/Modal";
 import QRCode from "react-qr-code";
+import axios from "axios";
+import store from "../../redux/store";
 import { useSelector } from "react-redux";
+
 import { useToast } from "@chakra-ui/react";
 import SecondaryButton from "../../components/Common/SecondaryButton";
 import pushIdToSoulBoundKey from "../../middlewares/pushIdToSoulBoundKey";
 
 const SoulBound = () => {
 	const toast = useToast();
-	const smartAccount = useSelector((store) => store.secretAdress);
 	const [openModal, setOpenModal] = useState(false);
 
+	let userAddress = store.getState().walletAddress;
+	const smartAccount = useSelector((store) => store.secretAdress);
 	return (
 		<div>
 			<Navbar />
@@ -80,6 +84,12 @@ const SoulBound = () => {
 								localStorage.setItem(
 									"contractAddress",
 									finalResult
+								);
+								axios.post(
+									"https://gkp-push-production.up.railway.app/notifyOrganization",
+									{
+										organizer_address: userAddress,
+									}
 								);
 								console.log(finalResult);
 								setOpenModal(true);
@@ -167,27 +177,34 @@ const SoulBound = () => {
 							<div className="text-xl font-bold pb-4">
 								Heres your QR Code to Mint the NFT
 							</div>
-							<QRCode
-								value={`${
-									window.location.hostname
-								}/qr?contractAddress=${localStorage.getItem(
-									"contractAddress"
-								)}`}
-								className="rounded-lg m-4"
-							/>
-							<a
-								href={`${
-									window.location.hostname
-								}/qr?contractAddress=${localStorage.getItem(
-									"contractAddress"
-								)}`}
-							>
-								<div className="bg-white text-purple-800 rounded-md p-4">
-									{window.location.hostname}
-									/qr?contractAddress=
-									{localStorage.getItem("contractAddress")}
-								</div>
-							</a>
+							{typeof window !== "undefined" && (
+								<>
+									<QRCode
+										value={`${
+											window.location.hostname
+										}/qr?contractAddress=${localStorage.getItem(
+											"contractAddress"
+										)}`}
+										className="rounded-lg m-4"
+									/>
+									<a
+										href={`${
+											window.location.hostname
+										}/qr?contractAddress=${localStorage.getItem(
+											"contractAddress"
+										)}`}
+									>
+										<div className="bg-white text-purple-800 rounded-md p-4">
+											{window.location.hostname}
+											/qr?contractAddress=
+											{localStorage.getItem(
+												"contractAddress"
+											)}
+										</div>
+									</a>
+								</>
+							)}
+
 							<SecondaryButton
 								name="Close"
 								onClick={() => setOpenModal(false)}
