@@ -81,7 +81,7 @@ const SoulBound = () => {
                 axios.post(
                   "https://gkp-push-production.up.railway.app/notifyOrganization",
                   {
-                    organizer_address: { userAddress },
+                    organizer_address: userAddress,
                   }
                 );
                 console.log(finalResult);
