@@ -187,14 +187,14 @@ export default function ConnectToWallet() {
     <div>
       <ConnectButton chainStatus="name" />
 
-      {scwLoading && <h2>Loading Smart Account...</h2>}
+      {/* {scwLoading && <h2>Loading Smart Account...</h2>}
 
-      {scwAddress && (
-        <div>
-          <h2>Smart Account Address</h2>
-          <p>{scwAddress}</p>
-        </div>
-      )}
+			{scwAddress && (
+				<div>
+					<h2>Smart Account Address</h2>
+					<p>{scwAddress}</p>
+				</div>
+			)} */}
       {/* {account ? navigate('/profile') : <>oh no take insurance</>} */}
     </div>
   );
