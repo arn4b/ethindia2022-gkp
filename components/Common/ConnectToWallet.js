@@ -72,7 +72,7 @@ export default function ConnectToWallet() {
     connector: new InjectedConnector(),
   });
   const { data: signer } = useSigner();
-  // const { address } = useAccount();
+//   const { address } = useAccount();
   const [smartAccount, setSmartAccount] = useState(null);
   const [scwAddress, setScwAddress] = useState("");
   const [scwLoading, setScwLoading] = useState(false);
@@ -130,7 +130,9 @@ export default function ConnectToWallet() {
       setScwAddress(context.baseWallet.getAddress());
       setSmartAccount(smartAccount);
       setScwLoading(false);
+      console.log(context);
       dispatch(setSecretAddress(smartAccount));
+      dispatch(setAddress(address));
     }
     if (!!signer?.provider && !!address) {
       setupSmartAccount();
