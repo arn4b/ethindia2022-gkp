@@ -138,11 +138,11 @@ export default function ConnectToWallet() {
 			setScwLoading(false);
 			dispatch(setSecretAddress(smartAccount));
 		}
-		if (!!signer?.provider && !!address) {
+		if (signer?.provider && address) {
 			setupSmartAccount();
 			console.log("Provider...", signer?.provider);
 		}
-	}, [address, signer?.provider]);
+	}, [, address, signer?.provider]);
 
 	const refreshState = () => {
 		setAccount();
@@ -195,16 +195,6 @@ export default function ConnectToWallet() {
 	return (
 		<div>
 			<ConnectButton chainStatus="name" />
-
-			{scwLoading && <h2>Loading Smart Account...</h2>}
-
-			{scwAddress && (
-				<div>
-					<h2>Smart Account Address</h2>
-					<p>{scwAddress}</p>
-				</div>
-			)}
-			{/* {account ? navigate('/profile') : <>oh no take insurance</>} */}
 		</div>
 	);
 }
