@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔐 GateKeeping Protokol Contracts🔗
 
-## Getting Started
+## Gatekeeping protocol as your event entry manager
+POAPs are overkill and highly unscalable at the same time. We wanted to create something that is easy for the event organisers to use, which doesn't involve the usual web3 jargon and has more than just a option to airdrop/mint NFTs . Presenting **Gatekeeping Protocol**, 
+The event organizers can choose from a wide range of gated mechanisms that we provide, for them to gatekeep as they want.
 
-First, run the development server:
+## Gatekeeping protocol as a subscription manager
+We take the idea of using NFTs as proof of attendance and extend it to using the same token as proof of subscription, thus extending the legs of POAP into the domain of subscription models. Some of these models include minting soul bound NFTs, NFT that can be sublet to others for a price.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Gatekeeping protocol as a *boring* POAP dispenser
+In addition to all the other cool features that we provide, we also act as POAP dispenser, which is just a fancy way of explaining account whitelisting.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Protocol structure
+* The protocol right now consists of 3 different type of subscription model / event management structures. All three of them are maintained by the **Gatekeeper** contract. This contract creates the NFT collection or whitelisting database as needed. It also acts as a lens to view all relevant data
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* Soul-bound NFT contract. This acts as the key to the gates which have issued an NFT 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+* Rentable NFT contract. These keys have a lessor-tenant relationship. The original keys can be rented out to other accounts for borrowing the utility. Best usecase for these kind of NFTs are OTT subscriptions
 
-## Learn More
+![GKP1](https://user-images.githubusercontent.com/71175155/205473268-ba9a6ca4-24dc-48f8-989c-df33132a97a9.jpeg)
+![GKP2](https://user-images.githubusercontent.com/71175155/205473273-02ac508f-a0fe-4327-9f0e-3b1985cd811e.jpeg)
+![GKP3](https://user-images.githubusercontent.com/71175155/205473276-a7dfe939-63b3-45da-9d81-3fa5de7b073c.jpeg)
+![GKP6](https://user-images.githubusercontent.com/71175155/205473285-263ed581-27e8-4966-9157-7e0fa67a301a.jpeg)
+![GKP5](https://user-images.githubusercontent.com/71175155/205473316-d1202885-f4be-4528-83af-15b75c89e1c3.jpeg)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Contract address
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Gatekeeper.sol : "0xA78268bC5A0a192300f935570FCd002796410387" deployed on Mumbai testnet on polygon.
+* RentedKey.sol : "0xE0E0CeCfa04Ad0Da26F9635131B3Da25AA3b153C" deployed on Mumbai testnet on Polygon.
+* SoulBoundKey.sol : "0x8029ec1b26A9eA9345F7E2D3fbc031Dcf1f7082C" deployed on Mumbai testnet on Polygon.
