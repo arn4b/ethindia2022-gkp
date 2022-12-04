@@ -21,8 +21,8 @@ In addition to all the other cool features that we provide, we also act as POAP 
 ![GKP1](https://user-images.githubusercontent.com/71175155/205473268-ba9a6ca4-24dc-48f8-989c-df33132a97a9.jpeg)
 ![GKP2](https://user-images.githubusercontent.com/71175155/205473273-02ac508f-a0fe-4327-9f0e-3b1985cd811e.jpeg)
 ![GKP3](https://user-images.githubusercontent.com/71175155/205473276-a7dfe939-63b3-45da-9d81-3fa5de7b073c.jpeg)
-![GKP4](https://user-images.githubusercontent.com/71175155/205473282-b7bb0d11-8a11-4732-94ba-ae1e1718c3e7.jpeg)
 ![GKP6](https://user-images.githubusercontent.com/71175155/205473285-263ed581-27e8-4966-9157-7e0fa67a301a.jpeg)
+![GKP5](https://user-images.githubusercontent.com/71175155/205473316-d1202885-f4be-4528-83af-15b75c89e1c3.jpeg)
 
 
 # Contract address
